@@ -50,6 +50,31 @@ namespace GridProblem
             return points;
 
         }
+        static void WriteColumn(int column, params Vector2[] points)
+        {
+            string value = String.Format("Row {0}: ",column);
+
+            for(int i = 0; i< points.Count();i++)
+            {
+                Vector2 point = points[i];
+
+                //if last point don't add hyphen
+                if(i == points.Count()-1)
+                {
+                    value += point.X + "," + point.Y + " - ";
+                } else
+                {
+                    value += point.X + "," + point.Y;
+                }
+            }
+
+            Console.WriteLine(value);
+
+        }
+        static void WriteRow()
+        {
+
+
         }
     }
 }
