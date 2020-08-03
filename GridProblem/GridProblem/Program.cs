@@ -20,7 +20,7 @@ namespace GridProblem
 
             List<Vector2> points = ReadPointsFromFile(fileName);
 
-            //   int squareSize = GetGridSize(points.Count());
+            int squareSize = GetGridSize(points.Count());
 
 
             //This should work as 9 is a square number
@@ -47,6 +47,34 @@ namespace GridProblem
         {
             List<Vector2> points = new List<Vector2>();
 
+            string line;
+
+            StreamReader file = new StreamReader(path);
+
+            while((line = file.ReadLine()) != null)
+            {
+                Vector2 point = new Vector2();
+                string[] values = line.Split(',');
+
+                int count = 0;
+                foreach(var v in values)
+                {
+                    Double output;
+                    Double.TryParse(v, out output);
+                    if (count == 0)
+                    {
+                        point.X = (float)output;
+                    } else 
+                    {
+                        point.Y = (float)output;
+                    }
+                    count++;
+                    
+                    Console.WriteLine(v);
+                }
+                Console.WriteLine(line);
+                points.Add(point);
+            }
 
             return points;
 
