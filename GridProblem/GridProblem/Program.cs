@@ -15,7 +15,11 @@ namespace GridProblem
             {
                 Console.WriteLine(arg);
             }
+            string fileName = args[0];
 
+            List<Vector2> points = ReadPointsFromFile(fileName);
+
+            //   int squareSize = GetGridSize(points.Count());
 
 
             //This should work as 9 is a square number
@@ -37,6 +41,14 @@ namespace GridProblem
                     "please check the data file and make sure it is a square number");
             }
             return (int)squareSize;
+        }
+        static List<Vector2> ReadPointsFromFile(string path)
+        {
+            List<Vector2> points = new List<Vector2>();
+
+
+            return points;
+
         }
         }
     }
