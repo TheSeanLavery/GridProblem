@@ -30,7 +30,9 @@ namespace GridProblem
             }
             return topLeftPoint;
         }
-        ///
+        /// <summary>
+        /// Gets angle between two Vectors
+        /// </summary>
         public static double AngleBetween(Vector2 vector1, Vector2 vector2)
         {
             double sin = vector1.X * vector2.Y - vector2.X * vector1.Y;
