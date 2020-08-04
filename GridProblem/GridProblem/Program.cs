@@ -32,6 +32,12 @@ namespace GridProblem
 
             Vector2 topLeftPoint = FindTopLeftPoint(points);
 
+            while(points.Count >0)
+            {
+                List<Vector2> Column = GetColumn(points, squareSize);
+                columns.Add(Column);
+            }
+
             //This should work as 9 is a square number
             //int testSquareSize = GetGridSize(9);
 
