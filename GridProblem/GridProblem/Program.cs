@@ -40,7 +40,9 @@ namespace GridProblem
             //Write the alpha angle to console
             OutputUtils.WriteAlpha(columns);
 
-            Console.ReadLine();
+            Console.WriteLine(" ");
+            Console.WriteLine("Press any key to exit");
+            Console.ReadKey();
         }
     }
 }
