@@ -9,6 +9,12 @@ namespace GridProblem
 {
     class GridUtils
     {
+        /// <summary>
+        /// Gets the grid size, assuming a square.
+        /// Will throw an error if not square.
+        /// </summary>
+        /// <param name="pointCount"></param>
+        /// <returns></returns>
         public static int GetGridSize(int pointCount)
         {
             double squareSize = Math.Sqrt(pointCount);
