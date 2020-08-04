@@ -21,20 +21,9 @@ namespace GridProblem
 
             GridUtils.CreateColumns(points, squareSize, columns);
             GridUtils.CreateRows(squareSize, rows, columns);
-
-            for (int i = 0; i < rows.Count; i++)
-            {
-                List<Vector2> row = rows[i];
-                WriteRow(i, row);
-            }
-            for (int i = 0; i < columns.Count; i++)
-            {
-                List<Vector2> column = columns[i];
-                WriteColumn(i, column);
-            }
-            Vector2 line1 = columns[1][0] - columns[0][0];
-            Vector2 line2 = new Vector2(1, 0);
-            Console.WriteLine("Alpha = " + MathUtils.AngleBetween(line1, line2) + " degrees");
+            WriteRows(rows);
+            WriteColumns(columns);
+            WriteAlpha(columns);
 
             //Console.WriteLine(A)
             //This should work as 9 is a square number
@@ -45,10 +34,32 @@ namespace GridProblem
 
             Console.ReadLine();
         }
-       
-        
-       
-       
+
+        private static void WriteAlpha(List<List<Vector2>> columns)
+        {
+            Vector2 line1 = columns[1][0] - columns[0][0];
+            Vector2 line2 = new Vector2(1, 0);
+            Console.WriteLine("Alpha = " + MathUtils.AngleBetween(line1, line2) + " degrees");
+        }
+
+        private static void WriteColumns(List<List<Vector2>> columns)
+        {
+            for (int i = 0; i < columns.Count; i++)
+            {
+                List<Vector2> column = columns[i];
+                WriteColumn(i, column);
+            }
+        }
+
+        private static void WriteRows(List<List<Vector2>> rows)
+        {
+            for (int i = 0; i < rows.Count; i++)
+            {
+                List<Vector2> row = rows[i];
+                WriteRow(i, row);
+            }
+        }
+
         static void WriteColumn(int column, List<Vector2> points)
         {
             string value = String.Format("Col {0}: ",column);
