@@ -48,6 +48,7 @@
     <Compile Include="FileUtils.cs" />
     <Compile Include="GridUtils.cs" />
     <Compile Include="MathUtils.cs" />
+    <Compile Include="OutputUtils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
