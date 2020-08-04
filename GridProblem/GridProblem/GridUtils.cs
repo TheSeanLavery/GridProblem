@@ -55,7 +55,9 @@ namespace GridProblem
                 columns.Add(Column);
             }
         }
-
+        /// <summary>
+        /// Gets a List of Vec2 for one column of data
+        /// </summary>
         static List<Vector2> GetColumn(List<Vector2> points, int count)
         {
             List<Vector2> result = new List<Vector2>();
