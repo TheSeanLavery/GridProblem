@@ -13,8 +13,6 @@ namespace GridProblem
         /// Gets the grid size, assuming a square.
         /// Will throw an error if not square.
         /// </summary>
-        /// <param name="pointCount"></param>
-        /// <returns></returns>
         public static int GetGridSize(int pointCount)
         {
             double squareSize = Math.Sqrt(pointCount);
@@ -43,9 +41,6 @@ namespace GridProblem
         /// Creates a list of a list of Vector2s representing the columns.
         /// Each list of Vector2s represents a column
         /// </summary>
-        /// <param name="points"></param>
-        /// <param name="squareSize"></param>
-        /// <param name="columns"></param>
         public static void CreateColumns(List<Vector2> points, int squareSize, List<List<Vector2>> columns)
         {
             //Runs while there are still points in the list
