@@ -22,6 +22,13 @@ namespace GridProblem
 
             int squareSize = GetGridSize(points.Count());
 
+            List<List<Vector2>> rows = new List<List<Vector2>>();
+            List<List<Vector2>> columns = new List<List<Vector2>>();
+
+            foreach(Vector2 p in points)
+            {
+                _ = GetClosestPoint(p, points);
+            }
 
             //This should work as 9 is a square number
             //int testSquareSize = GetGridSize(9);
@@ -31,6 +38,25 @@ namespace GridProblem
 
             Console.ReadLine();
         }
+
+        static Vector2 GetClosestPoint(Vector2 point, List<Vector2> points)
+        {
+            Vector2 closestPoint = new Vector2() ;
+            float distance;
+            float closestDistance = float.MaxValue;
+            foreach(Vector2 p in points)
+            {
+                if (p == point) continue;
+                distance = Vector2.Distance(point, p);
+                if(distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestPoint = p;
+                }
+            }
+            return closestPoint;
+        }
+
         static int GetGridSize(int pointCount)
         {
             double squareSize = Math.Sqrt(pointCount);
