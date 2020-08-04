@@ -34,7 +34,7 @@ namespace GridProblem
             }
             Vector2 line1 = columns[1][0] - columns[0][0];
             Vector2 line2 = new Vector2(1, 0);
-            Console.WriteLine("Alpha = " + AngleBetween(line1, line2) + " degrees");
+            Console.WriteLine("Alpha = " + MathUtils.AngleBetween(line1, line2) + " degrees");
 
             //Console.WriteLine(A)
             //This should work as 9 is a square number
@@ -69,13 +69,7 @@ namespace GridProblem
             }
         }
 
-        public static double AngleBetween(Vector2 vector1, Vector2 vector2)
-        {
-            double sin = vector1.X * vector2.Y - vector2.X * vector1.Y;
-            double cos = vector1.X * vector2.X + vector1.Y * vector2.Y;
-
-            return Math.Atan2(sin, cos) * (180 / Math.PI);
-        }
+        
         static List<Vector2> GetColumn(List<Vector2> points, int count)
         {
             List<Vector2> result = new List<Vector2>();
