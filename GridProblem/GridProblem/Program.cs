@@ -12,10 +12,6 @@ namespace GridProblem
     {
         static void Main(string[] args)
         {
-            foreach (string arg in args)
-            {
-                Console.WriteLine(arg);
-            }
             string fileName = args[0];
 
             List<Vector2> points = ReadPointsFromFile(fileName);
@@ -58,7 +54,6 @@ namespace GridProblem
             for (int i = 0; i < columns.Count; i++)
             {
                 List<Vector2> column = columns[i];
-
                 WriteColumn(i, column);
             }
 
@@ -89,9 +84,7 @@ namespace GridProblem
         static List<Vector2> GetColumn(List<Vector2> points, int count)
         {
             List<Vector2> result = new List<Vector2>();
-
             Vector2 startingPoint = FindTopLeftPoint(points);
-
             result.Add(startingPoint);
             points.Remove(startingPoint);
             for (int i = 0; i < count-1; i++)
@@ -125,7 +118,6 @@ namespace GridProblem
                 }
             }
             return topLeftPoint;
-
         }
         static Vector2 GetClosestPoint(Vector2 point, List<Vector2> points)
         {
@@ -191,11 +183,8 @@ namespace GridProblem
         static List<Vector2> ReadPointsFromFile(string path)
         {
             List<Vector2> points = new List<Vector2>();
-
             string line;
-
             StreamReader file = new StreamReader(path);
-
             while((line = file.ReadLine()) != null)
             {
                 Vector2 point = new Vector2();
@@ -214,15 +203,10 @@ namespace GridProblem
                         point.Y = (float)output;
                     }
                     count++;
-                    
-                    Console.WriteLine(v);
                 }
-                Console.WriteLine(line);
                 points.Add(point);
             }
-
             return points;
-
         }
         static void WriteColumn(int column, List<Vector2> points)
         {
