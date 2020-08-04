@@ -19,8 +19,8 @@ namespace GridProblem
             List<List<Vector2>> columns = new List<List<Vector2>>();
 
 
-            CreateColumns(points, squareSize, columns);
-            CreateRows(squareSize, rows, columns);
+            GridUtils.CreateColumns(points, squareSize, columns);
+            GridUtils.CreateRows(squareSize, rows, columns);
 
             for (int i = 0; i < rows.Count; i++)
             {
@@ -45,46 +45,7 @@ namespace GridProblem
 
             Console.ReadLine();
         }
-
-        private static void CreateRows(int squareSize, List<List<Vector2>> rows, List<List<Vector2>> columns)
-        {
-            for (int y = 0; y < squareSize; y++)
-            {
-                List<Vector2> row = new List<Vector2>();
-                for (int x = 0; x < squareSize; x++)
-                {
-                    Vector2 point = columns[x][y];
-                    row.Add(point);
-                }
-                rows.Add(row);
-            }
-        }
-
-        private static void CreateColumns(List<Vector2> points, int squareSize, List<List<Vector2>> columns)
-        {
-            while (points.Count > 0)
-            {
-                List<Vector2> Column = GetColumn(points, squareSize);
-                columns.Add(Column);
-            }
-        }
-
-        
-        static List<Vector2> GetColumn(List<Vector2> points, int count)
-        {
-            List<Vector2> result = new List<Vector2>();
-            Vector2 startingPoint = MathUtils.FindTopLeftPoint(points);
-            result.Add(startingPoint);
-            points.Remove(startingPoint);
-            for (int i = 0; i < count-1; i++)
-            {
-                Vector2 closest = GetClosestPointWithVerticalBias(startingPoint, points);
-                result.Add(closest);
-                startingPoint = closest;
-                points.Remove(closest);
-            }
-            return result;
-        }
+       
         
        
        
