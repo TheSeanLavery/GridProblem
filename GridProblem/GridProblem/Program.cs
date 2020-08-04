@@ -13,8 +13,8 @@ namespace GridProblem
         static void Main(string[] args)
         {
             string fileName = args[0];
-            List<Vector2> points = ReadPointsFromFile(fileName);
             int squareSize = GetGridSize(points.Count());
+            List<Vector2> points = FileUtils.ReadPointsFromFile(fileName);
             List<List<Vector2>> rows = new List<List<Vector2>>();
             List<List<Vector2>> columns = new List<List<Vector2>>();
 
@@ -155,34 +155,6 @@ namespace GridProblem
             {
                 throw new Exception("Grid must be square, " +
                     "please check the data file and make sure it is a square number");
-            }
-            return (int)squareSize;
-        }
-        static List<Vector2> ReadPointsFromFile(string path)
-        {
-            List<Vector2> points = new List<Vector2>();
-            string line;
-            StreamReader file = new StreamReader(path);
-            while((line = file.ReadLine()) != null)
-            {
-                Vector2 point = new Vector2();
-                string[] values = line.Split(',');
-
-                int count = 0;
-                foreach(var v in values)
-                {
-                    Double output;
-                    Double.TryParse(v, out output);
-                    if (count == 0)
-                    {
-                        point.X = (float)output;
-                    } else 
-                    {
-                        point.Y = (float)output;
-                    }
-                    count++;
-                }
-                points.Add(point);
             }
             return points;
         }
