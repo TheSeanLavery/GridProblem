@@ -46,6 +46,16 @@ namespace GridProblem
         }
 
         static List<List<Vector2>> GenerateGrid(int size)
+        static List<Vector2> UnpackColumns(List<List<Vector2>> cols)
+        {
+            List<Vector2> vecs = new List<Vector2>();
+            foreach(List<Vector2> v in cols)
+            {
+                vecs.AddRange(v);
+            }
+            return vecs;
+        }
+        static List<List<Vector2>> GenerateGrid(GridParams grid)
         {
             List<Vector2> generated = new List<Vector2>();
 
