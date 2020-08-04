@@ -13,27 +13,17 @@ namespace GridProblem
         static void Main(string[] args)
         {
             string fileName = args[0];
-
             List<Vector2> points = ReadPointsFromFile(fileName);
-
             int squareSize = GetGridSize(points.Count());
-
             List<List<Vector2>> rows = new List<List<Vector2>>();
             List<List<Vector2>> columns = new List<List<Vector2>>();
 
-            foreach(Vector2 p in points)
-            {
-                _ = GetClosestPoint(p, points);
-            }
-
             Vector2 topLeftPoint = FindTopLeftPoint(points);
-
             while(points.Count >0)
             {
                 List<Vector2> Column = GetColumn(points, squareSize);
                 columns.Add(Column);
             }
-
             for (int y = 0; y < squareSize; y++)
             {
                 List<Vector2> row = new List<Vector2>();
@@ -44,25 +34,18 @@ namespace GridProblem
                 }
                 rows.Add(row);
             }
-
             for (int i = 0; i < rows.Count; i++)
             {
                 List<Vector2> row = rows[i];
                 WriteRow(i, row);
             }
-
             for (int i = 0; i < columns.Count; i++)
             {
                 List<Vector2> column = columns[i];
                 WriteColumn(i, column);
             }
-
-            Vector2 line1; //new Vector2();
-            Vector2 line2; //new Vector2();
-
-            line1 = columns[1][0] - columns[0][0] ;
-            line2 = new Vector2(1, 0);
-
+            Vector2 line1 = columns[1][0] - columns[0][0] ;
+            Vector2 line2 = new Vector2(1, 0);
             Console.WriteLine("Alpha = "+AngleBetween(line1, line2)+" degrees");
 
             //Console.WriteLine(A)
@@ -89,7 +72,6 @@ namespace GridProblem
             points.Remove(startingPoint);
             for (int i = 0; i < count-1; i++)
             {
-                
                 Vector2 closest = GetClosestPointWithVerticalBias(startingPoint, points);
                 result.Add(closest);
                 startingPoint = closest;
@@ -101,7 +83,6 @@ namespace GridProblem
         {
             Vector2 topLeftCommon = new Vector2(float.MaxValue,0);
             Vector2 topLeftPoint = new Vector2();
-
             foreach(Vector2 p in points)
             {
                 if (p.X < topLeftCommon.X) topLeftCommon.X = p.X;
@@ -136,7 +117,6 @@ namespace GridProblem
             }
             return closestPoint;
         }
-
         static Vector2 GetClosestPointWithVerticalBias(Vector2 point, List<Vector2> points)
         {
             Vector2 closestPoint = new Vector2();
@@ -167,11 +147,9 @@ namespace GridProblem
             }
             return closestPoint;
         }
-
         static int GetGridSize(int pointCount)
         {
             double squareSize = Math.Sqrt(pointCount);
-
             //check if square is a whole number
             if(squareSize % 1 != 0)
             {
@@ -230,7 +208,6 @@ namespace GridProblem
         static void WriteRow(int row, List<Vector2> points)
         {
             string value = String.Format("Row {0}: ", row);
-
             for (int i = 0; i < points.Count(); i++)
             {
                 Vector2 point = points[i];
@@ -246,7 +223,6 @@ namespace GridProblem
                 }
             }
             Console.WriteLine(value);
-
         }
     }
 }
