@@ -41,5 +41,10 @@ namespace GridProblem
             Console.WriteLine("Press any key to exit");
             Console.ReadKey();
         }
+        public static float DegreesToRadians(float degrees)
+        {
+            float radians = (float)((Math.PI / 180) * degrees);
+            return (radians);
+        }
     }
 }
