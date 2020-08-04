@@ -19,21 +19,10 @@ namespace GridProblem
             List<List<Vector2>> columns = new List<List<Vector2>>();
 
             Vector2 topLeftPoint = FindTopLeftPoint(points);
-            while(points.Count >0)
-            {
-                List<Vector2> Column = GetColumn(points, squareSize);
-                columns.Add(Column);
-            }
-            for (int y = 0; y < squareSize; y++)
-            {
-                List<Vector2> row = new List<Vector2>();
-                for (int x = 0; x < squareSize; x++)
-                {
-                    Vector2 point = columns[x][y];
-                    row.Add(point);
-                }
-                rows.Add(row);
-            }
+
+            CreateColumns(points, squareSize, columns);
+            CreateRows(squareSize, rows, columns);
+
             for (int i = 0; i < rows.Count; i++)
             {
                 List<Vector2> row = rows[i];
@@ -44,9 +33,9 @@ namespace GridProblem
                 List<Vector2> column = columns[i];
                 WriteColumn(i, column);
             }
-            Vector2 line1 = columns[1][0] - columns[0][0] ;
+            Vector2 line1 = columns[1][0] - columns[0][0];
             Vector2 line2 = new Vector2(1, 0);
-            Console.WriteLine("Alpha = "+AngleBetween(line1, line2)+" degrees");
+            Console.WriteLine("Alpha = " + AngleBetween(line1, line2) + " degrees");
 
             //Console.WriteLine(A)
             //This should work as 9 is a square number
@@ -57,6 +46,30 @@ namespace GridProblem
 
             Console.ReadLine();
         }
+
+        private static void CreateRows(int squareSize, List<List<Vector2>> rows, List<List<Vector2>> columns)
+        {
+            for (int y = 0; y < squareSize; y++)
+            {
+                List<Vector2> row = new List<Vector2>();
+                for (int x = 0; x < squareSize; x++)
+                {
+                    Vector2 point = columns[x][y];
+                    row.Add(point);
+                }
+                rows.Add(row);
+            }
+        }
+
+        private static void CreateColumns(List<Vector2> points, int squareSize, List<List<Vector2>> columns)
+        {
+            while (points.Count > 0)
+            {
+                List<Vector2> Column = GetColumn(points, squareSize);
+                columns.Add(Column);
+            }
+        }
+
         public static double AngleBetween(Vector2 vector1, Vector2 vector2)
         {
             double sin = vector1.X * vector2.Y - vector2.X * vector1.Y;
