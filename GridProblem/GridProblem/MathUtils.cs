@@ -30,6 +30,7 @@ namespace GridProblem
             }
             return topLeftPoint;
         }
+        ///
         public static double AngleBetween(Vector2 vector1, Vector2 vector2)
         {
             double sin = vector1.X * vector2.Y - vector2.X * vector1.Y;
@@ -37,6 +38,10 @@ namespace GridProblem
 
             return Math.Atan2(sin, cos) * (180 / Math.PI);
         }
+        /// <summary>
+        /// Gets closest point from a list of points.
+        /// Will not return overlapping points
+        /// </summary>
         static Vector2 GetClosestPoint(Vector2 point, List<Vector2> points)
         {
             Vector2 closestPoint = new Vector2();
