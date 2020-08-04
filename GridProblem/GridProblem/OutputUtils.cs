@@ -9,6 +9,10 @@ namespace GridProblem
 {
     class OutputUtils
     {
+        /// <summary>
+        /// Calculates and writes angle alpha between the tilted grid and a grid with no tilt
+        /// </summary>
+        /// <param name="columns"></param>
         public static void WriteAlpha(List<List<Vector2>> columns)
         {
             Vector2 line1 = columns[1][0] - columns[0][0];
