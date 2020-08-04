@@ -11,7 +11,7 @@ namespace GridProblem
         /// </summary>
         public static Vector2 FindTopLeftPoint(List<Vector2> points)
         {
-            Vector2 topLeftCommon = new Vector2(float.MaxValue, 0);
+            Vector2 topLeftCommon = new Vector2(float.MaxValue, float.MinValue);
             Vector2 topLeftPoint = new Vector2();
             foreach (Vector2 p in points)
             {
