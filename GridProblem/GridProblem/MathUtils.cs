@@ -9,6 +9,9 @@ namespace GridProblem
 {
     class MathUtils
     {
+        /// <summary>
+        /// Finds the top left point in a list of 2D points
+        /// </summary>
         public static Vector2 FindTopLeftPoint(List<Vector2> points)
         {
             Vector2 topLeftCommon = new Vector2(float.MaxValue, 0);
