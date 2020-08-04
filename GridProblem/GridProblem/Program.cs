@@ -12,12 +12,12 @@ namespace GridProblem
     {
         static void Main(string[] args)
         {
+            List<List<Vector2>> rows = new List<List<Vector2>>();
+            List<List<Vector2>> columns = new List<List<Vector2>>();
+
             string fileName = args[0];
             List<Vector2> points = FileUtils.ReadPointsFromFile(fileName);
             int squareSize = GridUtils.GetGridSize(points.Count());
-
-            List<List<Vector2>> rows = new List<List<Vector2>>();
-            List<List<Vector2>> columns = new List<List<Vector2>>();
 
             GridUtils.CreateColumns(points, squareSize, columns);
             GridUtils.CreateRows(squareSize, rows, columns);
