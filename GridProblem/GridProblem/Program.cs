@@ -40,6 +40,24 @@ namespace GridProblem
 
             Console.ReadLine();
         }
+        static List<Vector2> GetColumn(List<Vector2> points, int count)
+        {
+            List<Vector2> result = new List<Vector2>();
+
+            Vector2 startingPoint = FindTopLeftPoint(points);
+
+            result.Add(startingPoint);
+            points.Remove(startingPoint);
+            for (int i = 0; i < count-1; i++)
+            {
+                
+                Vector2 closest = GetClosestPointWithVerticalBias(startingPoint, points);
+                result.Add(closest);
+                startingPoint = closest;
+                points.Remove(closest);
+            }
+            return result;
+        }
         static Vector2 FindTopLeftPoint(List<Vector2> points)
         {
             Vector2 topLeftCommon = new Vector2(float.MaxValue,0);
