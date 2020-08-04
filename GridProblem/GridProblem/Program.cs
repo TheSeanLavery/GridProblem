@@ -14,7 +14,9 @@ namespace GridProblem
             List<List<Vector2>> rows = new List<List<Vector2>>();
             List<List<Vector2>> columns = new List<List<Vector2>>();
 
-            GenerateGrid(5);
+            List<List<Vector2>> debugColumns = GenerateGrid(new GridParams());
+
+            List<Vector2> flatList = UnpackColumns(debugColumns);
 
             //Get the filename from the arguments
             string fileName = args[0];
@@ -44,8 +46,6 @@ namespace GridProblem
             Console.WriteLine("Press any key to exit");
             Console.ReadKey();
         }
-
-        static List<List<Vector2>> GenerateGrid(int size)
         static List<Vector2> UnpackColumns(List<List<Vector2>> cols)
         {
             List<Vector2> vecs = new List<Vector2>();
@@ -60,19 +60,17 @@ namespace GridProblem
             List<Vector2> generated = new List<Vector2>();
 
             Matrix result = new Matrix();
-            Random rand = new Random(1337);
+            Random rand = new Random(grid.seed);
 
             Vector2 startingPoint = new Vector2();
-            startingPoint.X = rand.Next(-50, 50);
-            startingPoint.Y = rand.Next(-50, 50);
-
-            int gridSize = 5;
+            startingPoint.X = rand.Next(grid.coordMin, grid.coordMax);
+            startingPoint.Y = rand.Next(grid.coordMin, grid.coordMax);
 
             Vector2 rightPoint = new Vector2();
-            rightPoint.X = startingPoint.X + gridSize;
+            rightPoint.X = startingPoint.X + grid.gridTicDistance;
             rightPoint.Y = startingPoint.Y;
 
-            float angle = rand.Next(0, 45);
+            float angle = rand.Next(grid.angleMin, grid.angleMax);
             rightPoint = RotateAboutOrigin(rightPoint, startingPoint, DegreesToRadians(angle));
 
             generated.Add(startingPoint);
@@ -97,11 +95,11 @@ namespace GridProblem
             Vector2 nextVec = new Vector2();
             nextVec.X = startingPoint.X;
             nextVec.Y = startingPoint.Y;
-            for(int x = 0; x < size; x++)
+            for(int x = 0; x < grid.squareSize; x++)
             {
                 List<Vector2> col = new List<Vector2>();
 
-                for (int y = 0; y < size; y++)
+                for (int y = 0; y < grid.squareSize; y++)
                 {
                     col.Add(nextVec);
                     nextVec += columnAngle;
