@@ -13,6 +13,8 @@ namespace GridProblem
             List<List<Vector2>> rows = new List<List<Vector2>>();
             List<List<Vector2>> columns = new List<List<Vector2>>();
 
+            GenerateGrid(5);
+
             //Get the filename from the arguments
             string fileName = args[0];
 
@@ -40,6 +42,70 @@ namespace GridProblem
             Console.WriteLine(" ");
             Console.WriteLine("Press any key to exit");
             Console.ReadKey();
+        }
+
+        static List<List<Vector2>> GenerateGrid(int size)
+        {
+            List<Vector2> generated = new List<Vector2>();
+
+            Matrix result = new Matrix();
+            Random rand = new Random(1337);
+
+            Vector2 startingPoint = new Vector2();
+            startingPoint.X = rand.Next(-50, 50);
+            startingPoint.Y = rand.Next(-50, 50);
+
+            int gridSize = 5;
+
+            Vector2 rightPoint = new Vector2();
+            rightPoint.X = startingPoint.X + gridSize;
+            rightPoint.Y = startingPoint.Y;
+
+            float angle = rand.Next(0, 45);
+            rightPoint = RotateAboutOrigin(rightPoint, startingPoint, DegreesToRadians(angle));
+
+            generated.Add(startingPoint);
+            generated.Add(rightPoint);
+
+            Vector2 bottomPoint = new Vector2();
+            bottomPoint.X = rightPoint.X;
+            bottomPoint.Y = rightPoint.Y;
+
+            bottomPoint = RotateAboutOrigin(bottomPoint, startingPoint, DegreesToRadians(-90));
+            generated.Add(bottomPoint);
+
+
+            List<List<Vector2>> columns = new List<List<Vector2>>();
+
+            //col.Add(startingPoint);
+            //col.Add(bottomPoint);
+
+            Vector2 columnAngle =  bottomPoint - startingPoint;
+            Vector2 rowAngle = rightPoint - startingPoint;
+
+            Vector2 nextVec = new Vector2();
+            nextVec.X = startingPoint.X;
+            nextVec.Y = startingPoint.Y;
+            for(int x = 0; x < size; x++)
+            {
+                List<Vector2> col = new List<Vector2>();
+
+                for (int y = 0; y < size; y++)
+                {
+                    col.Add(nextVec);
+                    nextVec += columnAngle;
+                }
+                nextVec = startingPoint + (rowAngle * (x+1));
+                columns.Add(col);
+            }
+            
+
+            return columns;
+
+            //result.RotateAt(angle, startingPoint);
+            
+            //generated.Add()
+            
         }
         public static float DegreesToRadians(float degrees)
         {
