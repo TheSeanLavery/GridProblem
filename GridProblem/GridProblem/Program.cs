@@ -15,22 +15,16 @@ namespace GridProblem
             string fileName = args[0];
             List<Vector2> points = FileUtils.ReadPointsFromFile(fileName);
             int squareSize = GridUtils.GetGridSize(points.Count());
+
             List<List<Vector2>> rows = new List<List<Vector2>>();
             List<List<Vector2>> columns = new List<List<Vector2>>();
 
-
             GridUtils.CreateColumns(points, squareSize, columns);
             GridUtils.CreateRows(squareSize, rows, columns);
+
             OutputUtils.WriteRows(rows);
             OutputUtils.WriteColumns(columns);
             OutputUtils.WriteAlpha(columns);
-
-            //Console.WriteLine(A)
-            //This should work as 9 is a square number
-            //int testSquareSize = GetGridSize(9); 
-
-            //This should cause an exception as 20 is not a square number
-            //int testSquareSize = GetGridSize(9); 
 
             Console.ReadLine();
         }
