@@ -18,7 +18,6 @@ namespace GridProblem
             List<List<Vector2>> rows = new List<List<Vector2>>();
             List<List<Vector2>> columns = new List<List<Vector2>>();
 
-            Vector2 topLeftPoint = FindTopLeftPoint(points);
 
             CreateColumns(points, squareSize, columns);
             CreateRows(squareSize, rows, columns);
