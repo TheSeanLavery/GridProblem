@@ -54,6 +54,11 @@ namespace GridProblem
             }
             return closestPoint;
         }
+        /// <summary>
+        /// Gets closest points with a vertical bias.
+        /// The X values are multiplied by 50 to make the graph seem wider than it is,
+        /// causing any distances to be biased in the vertical direction
+        /// </summary>
         public static Vector2 GetClosestPointWithVerticalBias(Vector2 point, List<Vector2> points)
         {
             Vector2 closestPoint = new Vector2();
