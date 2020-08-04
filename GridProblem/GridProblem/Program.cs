@@ -38,6 +38,32 @@ namespace GridProblem
                 columns.Add(Column);
             }
 
+
+            
+            for (int y = 0; y < squareSize; y++)
+            {
+                List<Vector2> row = new List<Vector2>();
+                for (int x = 0; x < squareSize; x++)
+                {
+                    Vector2 point = columns[x][y];
+                    row.Add(point);
+                }
+                rows.Add(row);
+            }
+
+            for (int i = 0; i < rows.Count; i++)
+            {
+                List<Vector2> row = rows[i];
+                WriteRow(i, row);
+            }
+
+            for (int i = 0; i < columns.Count; i++)
+            {
+                List<Vector2> column = columns[i];
+
+                WriteColumn(i, column);
+            }
+
             //This should work as 9 is a square number
             //int testSquareSize = GetGridSize(9);
 
@@ -184,9 +210,9 @@ namespace GridProblem
             return points;
 
         }
-        static void WriteColumn(int column, params Vector2[] points)
+        static void WriteColumn(int column, List<Vector2> points)
         {
-            string value = String.Format("Row {0}: ",column);
+            string value = String.Format("Col {0}: ",column);
 
             for(int i = 0; i< points.Count();i++)
             {
@@ -195,19 +221,33 @@ namespace GridProblem
                 //if last point don't add hyphen
                 if(i == points.Count()-1)
                 {
-                    value += point.X + "," + point.Y + " - ";
+                    value += point.X + "," + point.Y ;
                 } else
+                {
+                    value += point.X + "," + point.Y + " - ";
+                }
+            }
+            Console.WriteLine(value);
+        }
+        static void WriteRow(int row, List<Vector2> points)
+        {
+            string value = String.Format("Row {0}: ", row);
+
+            for (int i = 0; i < points.Count(); i++)
+            {
+                Vector2 point = points[i];
+
+                //if last point don't add hyphen
+                if (i == points.Count() - 1)
                 {
                     value += point.X + "," + point.Y;
                 }
+                else
+                {
+                    value += point.X + "," + point.Y + " - ";
+                }
             }
-
             Console.WriteLine(value);
-
-        }
-        static void WriteRow()
-        {
-
 
         }
     }
