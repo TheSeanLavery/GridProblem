@@ -39,9 +39,16 @@ namespace GridProblem
                 rows.Add(row);
             }
         }
-
+        /// <summary>
+        /// Creates a list of a list of Vector2s representing the columns.
+        /// Each list of Vector2s represents a column
+        /// </summary>
+        /// <param name="points"></param>
+        /// <param name="squareSize"></param>
+        /// <param name="columns"></param>
         public static void CreateColumns(List<Vector2> points, int squareSize, List<List<Vector2>> columns)
         {
+            //Runs while there are still points in the list
             while (points.Count > 0)
             {
                 List<Vector2> Column = GetColumn(points, squareSize);
