@@ -38,8 +38,6 @@ namespace GridProblem
                 columns.Add(Column);
             }
 
-
-            
             for (int y = 0; y < squareSize; y++)
             {
                 List<Vector2> row = new List<Vector2>();
@@ -64,8 +62,17 @@ namespace GridProblem
                 WriteColumn(i, column);
             }
 
+            Vector2 line1; //new Vector2();
+            Vector2 line2; //new Vector2();
+
+            line1 = columns[1][0] - columns[0][0] ;
+            line2 = new Vector2(1, 0);
+
+            Console.WriteLine("Alpha = "+AngleBetween(line1, line2)+" degrees");
+
+            //Console.WriteLine(A)
             //This should work as 9 is a square number
-            //int testSquareSize = GetGridSize(9);
+            //int testSquareSize = GetGridSize(9); 
 
             //This should cause an exception as 20 is not a square number
             //int testSquareSize = GetGridSize(9); 
