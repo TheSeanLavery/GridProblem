@@ -4,7 +4,7 @@ using System.Numerics;
 
 namespace GridProblem
 {
-    class GridUtils
+    public class GridUtils
     {
         /// <summary>
         /// Gets the grid size, assuming a square.

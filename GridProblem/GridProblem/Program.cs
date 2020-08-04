@@ -6,9 +6,9 @@ using System.Numerics;
 
 namespace GridProblem
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             //Create empty lists for rows and columns
             List<List<Vector2>> rows = new List<List<Vector2>>();
@@ -46,7 +46,7 @@ namespace GridProblem
             Console.WriteLine("Press any key to exit");
             Console.ReadKey();
         }
-        static List<Vector2> UnpackColumns(List<List<Vector2>> cols)
+        public static List<Vector2> UnpackColumns(List<List<Vector2>> cols)
         {
             List<Vector2> vecs = new List<Vector2>();
             foreach(List<Vector2> v in cols)
@@ -55,7 +55,7 @@ namespace GridProblem
             }
             return vecs;
         }
-        static List<List<Vector2>> GenerateGrid(GridParams grid)
+        public static List<List<Vector2>> GenerateGrid(GridParams grid)
         {
             List<Vector2> generated = new List<Vector2>();
 

@@ -4,7 +4,7 @@ using System.Numerics;
 
 namespace GridProblem
 {
-    class MathUtils
+    public class MathUtils
     {
         /// <summary>
         /// Finds the top left point in a list of 2D points
