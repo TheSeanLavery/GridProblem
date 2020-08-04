@@ -10,6 +10,11 @@ namespace GridProblem
 {
     class FileUtils
     {
+        /// <summary>
+        /// Reads tuples from file into Vec2 List
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static List<Vector2> ReadPointsFromFile(string path)
         {
             List<Vector2> points = new List<Vector2>();
@@ -25,6 +30,8 @@ namespace GridProblem
                 {
                     Double output;
                     Double.TryParse(v, out output);
+
+                    //Only works with X and Y pair of numbers
                     if (count == 0)
                     {
                         point.X = (float)output;
