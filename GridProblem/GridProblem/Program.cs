@@ -13,8 +13,8 @@ namespace GridProblem
         static void Main(string[] args)
         {
             string fileName = args[0];
-            int squareSize = GetGridSize(points.Count());
             List<Vector2> points = FileUtils.ReadPointsFromFile(fileName);
+            int squareSize = GridUtils.GetGridSize(points.Count());
             List<List<Vector2>> rows = new List<List<Vector2>>();
             List<List<Vector2>> columns = new List<List<Vector2>>();
 
@@ -146,17 +146,6 @@ namespace GridProblem
                 }
             }
             return closestPoint;
-        }
-        static int GetGridSize(int pointCount)
-        {
-            double squareSize = Math.Sqrt(pointCount);
-            //check if square is a whole number
-            if(squareSize % 1 != 0)
-            {
-                throw new Exception("Grid must be square, " +
-                    "please check the data file and make sure it is a square number");
-            }
-            return points;
         }
         static void WriteColumn(int column, List<Vector2> points)
         {
