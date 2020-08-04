@@ -46,5 +46,9 @@ namespace GridProblem
             float radians = (float)((Math.PI / 180) * degrees);
             return (radians);
         }
+        public static Vector2 RotateAboutOrigin(Vector2 point, Vector2 origin, float rotation)
+        {
+            return Vector2.Transform(point - origin, Matrix3x2.CreateRotation(rotation)) + origin;
+        }
     }
 }
