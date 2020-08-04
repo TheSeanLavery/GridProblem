@@ -26,10 +26,10 @@ namespace GridProblem
             int squareSize = GridUtils.GetGridSize(points.Count());
 
             //Analyze data and extract columns
-            GridUtils.CreateColumns(points, squareSize, columns);
+            columns = GridUtils.CreateColumns(points, squareSize);
 
             //Use column data and extract rows
-            GridUtils.CreateRows(squareSize, rows, columns);
+            rows = GridUtils.CreateRows(squareSize, columns);
 
             //Write calculated rows to console
             OutputUtils.WriteRows(rows);
