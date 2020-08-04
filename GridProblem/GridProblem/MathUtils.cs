@@ -87,7 +87,7 @@ namespace GridProblem
                 stretchedPoint.X = p.X * stretchValue;
                 stretchedPoint.Y = p.Y;
 
-                distance = Vector2.Distance(point, stretchedPoint);
+                distance = Vector2.Distance(stretchedOriginalPoint, stretchedPoint);
                 if (distance < closestDistance)
                 {
                     closestDistance = distance;
