@@ -15,7 +15,7 @@ namespace GridProblemUnitTests
 
             for (int i = 0; i < 200; i++)
             {
-                TestGridParam(0, 44, i);
+                TestGridParam(0, 45, i);
             }
         }
         void TestGridParam(int minAngle, int maxAngle, int? randomSeed=null)
