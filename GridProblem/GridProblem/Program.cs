@@ -11,12 +11,8 @@ namespace GridProblem
         public static void Main(string[] args)
         {
             //Create empty lists for rows and columns
-            List<List<Vector2>> rows = new List<List<Vector2>>();
-            List<List<Vector2>> columns = new List<List<Vector2>>();
-
-            //List<List<Vector2>> debugColumns = GenerateGrid(new GridParams());
-
-            //List<Vector2> flatList = UnpackColumns(debugColumns);
+            List<List<Vector2>> rows;
+            List<List<Vector2>> columns;
 
             //Get the filename from the arguments
             string fileName = args[0];
@@ -46,15 +42,5 @@ namespace GridProblem
             Console.WriteLine("Press any key to exit");
             Console.ReadKey();
         }
-    }
-    public class GridParams
-    {
-        public int squareSize = 5;
-        public int gridTicDistance = 5;
-        public int seed = 1337;
-        public int coordMin = -50;
-        public int coordMax = 50;
-        public int angleMin = 0;
-        public int angleMax = 45;
     }
 }

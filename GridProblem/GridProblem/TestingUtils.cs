@@ -72,4 +72,14 @@ namespace GridProblem
 
         }
     }
+    public class GridParams
+    {
+        public int squareSize = 5;
+        public int gridTicDistance = 5;
+        public int seed = 1337;
+        public int coordMin = -50;
+        public int coordMax = 50;
+        public int angleMin = 0;
+        public int angleMax = 45;
+    }
 }
