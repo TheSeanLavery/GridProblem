@@ -142,5 +142,15 @@ namespace GridProblem
 
             return result;
         }
+        static float AngleOfClosest(Vector2 startingPoint, List<Vector2> points)
+        {
+
+            float angleTest = (float)MathUtils.AngleBetween(new Vector2(0,1), new Vector2(20,2));
+            List<Vector2> closestPoints = GetClosest2Points(startingPoint, points);
+            Vector2 bottomPoint = GetLowestPoint(closestPoints);
+            float angle = (float)MathUtils.AngleBetween(startingPoint, bottomPoint);
+            return angle;
+
+        }
     }
 }
