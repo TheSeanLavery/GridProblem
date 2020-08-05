@@ -71,6 +71,14 @@ namespace GridProblem
             }
             return result;
         }
+        static bool IsClose(float f1,float f2,float error = 3)
+        {
+            if(Math.Abs(f1-f2)< error)
+            {
+                return true;
+            }
+            return false;
+        }
 
     }
 }
