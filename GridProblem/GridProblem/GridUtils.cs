@@ -62,9 +62,12 @@ namespace GridProblem
             Vector2 startingPoint = MathUtils.FindTopLeftPoint(points);
             result.Add(startingPoint);
             points.Remove(startingPoint);
+
+            float angle = AngleOfClosest(startingPoint, points);
             for (int i = 0; i < count - 1; i++)
             {
-                Vector2 closest = MathUtils.GetClosestPointWithVerticalBias(startingPoint, points);
+                Vector2 closest = GetClosestPointAlongAngle(startingPoint, points, angle);
+
                 result.Add(closest);
                 startingPoint = closest;
                 points.Remove(closest);
