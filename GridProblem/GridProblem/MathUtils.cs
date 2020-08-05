@@ -36,10 +36,9 @@ namespace GridProblem
         /// </summary>
         public static double AngleBetween(Vector2 vector1, Vector2 vector2)
         {
-            double sin = vector1.X * vector2.Y - vector2.X * vector1.Y;
-            double cos = vector1.X * vector2.X + vector1.Y * vector2.Y;
-
-            return Math.Atan2(sin, cos) * (180 / Math.PI);
+            float xDiff = vector2.X - vector1.X;
+            float yDiff = vector2.Y - vector1.Y;
+            return Math.Atan2(yDiff, xDiff) * 180.0 / Math.PI;
         }
         /// <summary>
         /// Gets closest point from a list of points.
