@@ -38,7 +38,8 @@ namespace GridProblem
         {
             float xDiff = vector2.X - vector1.X;
             float yDiff = vector2.Y - vector1.Y;
-            return Math.Atan2(yDiff, xDiff) * 180.0 / Math.PI;
+            double value = Math.Atan2(yDiff, xDiff) * 180.0 / Math.PI;
+            return value;
         }
         /// <summary>
         /// Gets closest point from a list of points.
@@ -95,6 +96,15 @@ namespace GridProblem
                 }
             }
             return closestPoint;
+        }
+        public static float DegreesToRadians(float degrees)
+        {
+            float radians = (float)((Math.PI / 180) * degrees);
+            return (radians);
+        }
+        public static Vector2 RotateAboutOrigin(Vector2 point, Vector2 origin, float rotation)
+        {
+            return Vector2.Transform(point - origin, Matrix3x2.CreateRotation(rotation)) + origin;
         }
     }
 }

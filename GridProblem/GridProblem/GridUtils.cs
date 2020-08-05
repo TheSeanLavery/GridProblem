@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Linq;
 
 namespace GridProblem
 {
@@ -74,7 +75,7 @@ namespace GridProblem
             }
             return result;
         }
-        static bool IsClose(float f1,float f2,float error = 3)
+        static bool IsClose(float f1,float f2,float error = 10)
         {
             if(Math.Abs(f1-f2)< error)
             {
@@ -124,36 +125,44 @@ namespace GridProblem
             Vector2 p1 = new Vector2();
             Vector2 p2 = new Vector2();
 
-            float distance1 = float.MaxValue;
-            float distance2 = float.MaxValue;
+            var dictionary = new Dictionary<Vector2, float>();
+
+            
             foreach(Vector2 p in points)
             {
                 float distance = Vector2.Distance(startingPoint, p);
-                if(distance < distance1)
-                {
-                    distance1 = distance;
-                    p1 = p;
-                } else if(distance < distance2)
-                {
-
-                    distance2 = distance;
-                    p2 = p;
-                }
+                dictionary.Add(p, distance);
             }
-            result.Add(p1);
-            result.Add(p2);
+            var list = dictionary.ToList();
+            list.Sort((pair1, pair2) => pair1.Value.CompareTo(pair2.Value));
+
+            result.Add(list[0].Key);
+            result.Add(list[1].Key);
 
             return result;
         }
+        /// <summary>
+        /// Operates on the top left point to find the next right and down points
+        /// </summary>
+        /// <param name="startingPoint"></param>
+        /// <param name="points"></param>
+        /// <returns></returns>
         static float AngleOfClosest(Vector2 startingPoint, List<Vector2> points)
         {
-
             float angleTest = (float)MathUtils.AngleBetween(new Vector2(0,1), new Vector2(20,2));
-            List<Vector2> closestPoints = GetClosest2Points(startingPoint, points);
+            List<Vector2> closestPoints = GetClosest2Points(startingPoint, points); 
             Vector2 bottomPoint = GetLowestPoint(closestPoints);
             float angle = (float)MathUtils.AngleBetween(startingPoint, bottomPoint);
             return angle;
-
+        }
+        public static List<Vector2> UnpackColumns(List<List<Vector2>> cols)
+        {
+            List<Vector2> vecs = new List<Vector2>();
+            foreach (List<Vector2> v in cols)
+            {
+                vecs.AddRange(v);
+            }
+            return vecs;
         }
     }
 }

@@ -14,9 +14,9 @@ namespace GridProblem
             List<List<Vector2>> rows = new List<List<Vector2>>();
             List<List<Vector2>> columns = new List<List<Vector2>>();
 
-            List<List<Vector2>> debugColumns = GenerateGrid(new GridParams());
+            //List<List<Vector2>> debugColumns = GenerateGrid(new GridParams());
 
-            List<Vector2> flatList = UnpackColumns(debugColumns);
+            //List<Vector2> flatList = UnpackColumns(debugColumns);
 
             //Get the filename from the arguments
             string fileName = args[0];
@@ -46,85 +46,9 @@ namespace GridProblem
             Console.WriteLine("Press any key to exit");
             Console.ReadKey();
         }
-        public static List<Vector2> UnpackColumns(List<List<Vector2>> cols)
-        {
-            List<Vector2> vecs = new List<Vector2>();
-            foreach(List<Vector2> v in cols)
-            {
-                vecs.AddRange(v);
-            }
-            return vecs;
-        }
-        public static List<List<Vector2>> GenerateGrid(GridParams grid)
-        {
-            List<Vector2> generated = new List<Vector2>();
-
-            Matrix result = new Matrix();
-            Random rand = new Random(grid.seed);
-
-            Vector2 startingPoint = new Vector2();
-            startingPoint.X = rand.Next(grid.coordMin, grid.coordMax);
-            startingPoint.Y = rand.Next(grid.coordMin, grid.coordMax);
-
-            Vector2 rightPoint = new Vector2();
-            rightPoint.X = startingPoint.X + grid.gridTicDistance;
-            rightPoint.Y = startingPoint.Y;
-
-            float angle = rand.Next(grid.angleMin, grid.angleMax);
-            rightPoint = RotateAboutOrigin(rightPoint, startingPoint, DegreesToRadians(angle));
-
-            generated.Add(startingPoint);
-            generated.Add(rightPoint);
-
-            Vector2 bottomPoint = new Vector2();
-            bottomPoint.X = rightPoint.X;
-            bottomPoint.Y = rightPoint.Y;
-
-            bottomPoint = RotateAboutOrigin(bottomPoint, startingPoint, DegreesToRadians(-90));
-            generated.Add(bottomPoint);
-
-
-            List<List<Vector2>> columns = new List<List<Vector2>>();
-
-            //col.Add(startingPoint);
-            //col.Add(bottomPoint);
-
-            Vector2 columnAngle =  bottomPoint - startingPoint;
-            Vector2 rowAngle = rightPoint - startingPoint;
-
-            Vector2 nextVec = new Vector2();
-            nextVec.X = startingPoint.X;
-            nextVec.Y = startingPoint.Y;
-            for(int x = 0; x < grid.squareSize; x++)
-            {
-                List<Vector2> col = new List<Vector2>();
-
-                for (int y = 0; y < grid.squareSize; y++)
-                {
-                    col.Add(nextVec);
-                    nextVec += columnAngle;
-                }
-                nextVec = startingPoint + (rowAngle * (x+1));
-                columns.Add(col);
-            }
-            
-
-            return columns;
-
-            //result.RotateAt(angle, startingPoint);
-            
-            //generated.Add()
-            
-        }
-        public static float DegreesToRadians(float degrees)
-        {
-            float radians = (float)((Math.PI / 180) * degrees);
-            return (radians);
-        }
-        public static Vector2 RotateAboutOrigin(Vector2 point, Vector2 origin, float rotation)
-        {
-            return Vector2.Transform(point - origin, Matrix3x2.CreateRotation(rotation)) + origin;
-        }
+       
+        
+        
     }
     public class GridParams
     {
