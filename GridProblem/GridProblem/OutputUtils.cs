@@ -14,9 +14,9 @@ namespace GridProblem
         /// <param name="columns"></param>
         public static void WriteAlpha(List<List<Vector2>> columns)
         {
-            Vector2 line1 =  columns[0][0] - columns[1][0];
+            Vector2 line1 = columns[1][0] - columns[0][0];
             Vector2 line2 = new Vector2(1, 0);
-            Console.WriteLine("Alpha = " + MathUtils.AngleBetween(line1, line2) + " degrees");
+            Console.WriteLine("Alpha = " + MathUtils.AngleBetweenLines(line1, line2) + " degrees");
         }
         /// <summary>
         /// Writes the Columns to to the console
