@@ -79,6 +79,26 @@ namespace GridProblem
             }
             return false;
         }
+        static Vector2 GetClosestPointAlongAngle(Vector2 point, List<Vector2> points, float angle)
+        {
+            Vector2 closestPoint = new Vector2();
+            float distance;
+            float closestDistance = float.MaxValue;
+            foreach (Vector2 p in points)
+            {
+                float newAngle = (float)MathUtils.AngleBetween(point, p);
 
+                if (!IsClose(newAngle, angle)) continue;
+
+                if (p == point) continue;
+                distance = Vector2.Distance(point, p);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestPoint = p;
+                }
+            }
+            return closestPoint;
+        }
     }
 }
