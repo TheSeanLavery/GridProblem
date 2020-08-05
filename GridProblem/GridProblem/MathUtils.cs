@@ -19,7 +19,7 @@ namespace GridProblem
                 if (p.Y > topLeftCommon.Y) topLeftCommon.Y = p.Y;
             }
             float distance = float.MaxValue;
-            Vector2 stretched = new Vector2(1, 50);
+            Vector2 stretched = new Vector2(50, 1);
             foreach (Vector2 p in points)
             {
                 float newDistance = Vector2.Distance(topLeftCommon*stretched, p * stretched);
