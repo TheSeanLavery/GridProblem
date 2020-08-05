@@ -114,5 +114,33 @@ namespace GridProblem
             }
             return value;
         }
+        static List<Vector2> GetClosest2Points(Vector2 startingPoint, List<Vector2> points)
+        { 
+            List<Vector2> result = new List<Vector2>();
+
+            Vector2 p1 = new Vector2();
+            Vector2 p2 = new Vector2();
+
+            float distance1 = float.MaxValue;
+            float distance2 = float.MaxValue;
+            foreach(Vector2 p in points)
+            {
+                float distance = Vector2.Distance(startingPoint, p);
+                if(distance < distance1)
+                {
+                    distance1 = distance;
+                    p1 = p;
+                } else if(distance < distance2)
+                {
+
+                    distance2 = distance;
+                    p2 = p;
+                }
+            }
+            result.Add(p1);
+            result.Add(p2);
+
+            return result;
+        }
     }
 }
