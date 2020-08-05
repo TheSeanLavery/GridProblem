@@ -28,8 +28,8 @@ namespace GridProblemUnitTests
 
                 Random rand = new Random();
                 GridProblem.GridParams grid = new GridProblem.GridParams();
-                grid.squareSize = 2;
-                grid.coordMin = -50;
+                grid.squareSize = rand.Next(3,10);
+                grid.coordMin = 0;
                 grid.coordMax = 100;
 
                 if (randomSeed == null) grid.seed = rand.Next();
