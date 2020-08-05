@@ -100,5 +100,19 @@ namespace GridProblem
             }
             return closestPoint;
         }
+        static Vector2 GetLowestPoint(List<Vector2> points)
+        {
+            float height = float.MaxValue;
+            Vector2 value = new Vector2();
+            foreach(Vector2 p in points)
+            {
+                if (p.Y < height)
+                {
+                    height = p.Y;
+                    value = p;
+                }
+            }
+            return value;
+        }
     }
 }
