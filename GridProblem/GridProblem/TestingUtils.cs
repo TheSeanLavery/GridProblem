@@ -10,6 +10,9 @@ namespace GridProblem
 {
     public class TestingUtils
     {
+        /// <summary>
+        /// Generates a rotated Grid with seeded random number generation for unit testing
+        /// </summary>
         public static List<List<Vector2>> GenerateGrid(GridParams grid)
         {
             List<Vector2> generated = new List<Vector2>();
@@ -72,6 +75,10 @@ namespace GridProblem
 
         }
     }
+
+    /// <summary>
+    /// Data structure class for generation of grids for Unit Test
+    /// </summary>
     public class GridParams
     {
         public int squareSize = 5;
