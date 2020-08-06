@@ -49,27 +49,6 @@ namespace GridProblem
             return Math.Atan2(sin, cos) * (180 / Math.PI);
         }
         /// <summary>
-        /// Gets closest point from a list of points.
-        /// Will not return overlapping points
-        /// </summary>
-        static Vector2 GetClosestPoint(Vector2 point, List<Vector2> points)
-        {
-            Vector2 closestPoint = new Vector2();
-            float distance;
-            float closestDistance = float.MaxValue;
-            foreach (Vector2 p in points)
-            {
-                if (p == point) continue;
-                distance = Vector2.Distance(point, p);
-                if (distance < closestDistance)
-                {
-                    closestDistance = distance;
-                    closestPoint = p;
-                }
-            }
-            return closestPoint;
-        }
-        /// <summary>
         /// Gets closest points with a vertical bias.
         /// The X values are multiplied by 50 to make the graph seem wider than it is,
         /// causing any distances to be biased in the vertical direction
