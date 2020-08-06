@@ -48,41 +48,7 @@ namespace GridProblem
 
             return Math.Atan2(sin, cos) * (180 / Math.PI);
         }
-        /// <summary>
-        /// Gets closest points with a vertical bias.
-        /// The X values are multiplied by 50 to make the graph seem wider than it is,
-        /// causing any distances to be biased in the vertical direction
-        /// </summary>
-        public static Vector2 GetClosestPointWithVerticalBias(Vector2 point, List<Vector2> points)
-        {
-            Vector2 closestPoint = new Vector2();
-            List<Vector2> tempPoints = new List<Vector2>();
-            tempPoints.AddRange(points);
-
-            float stretchValue = 50;
-
-            Vector2 stretchedOriginalPoint = new Vector2();
-            stretchedOriginalPoint.X = point.X * stretchValue;
-            stretchedOriginalPoint.Y = point.Y;
-
-            float distance;
-            float closestDistance = float.MaxValue;
-            foreach (Vector2 p in tempPoints)
-            {
-                if (p == point) continue;
-                Vector2 stretchedPoint = new Vector2();
-                stretchedPoint.X = p.X * stretchValue;
-                stretchedPoint.Y = p.Y;
-
-                distance = Vector2.Distance(stretchedOriginalPoint, stretchedPoint);
-                if (distance < closestDistance)
-                {
-                    closestDistance = distance;
-                    closestPoint = p;
-                }
-            }
-            return closestPoint;
-        }
+    
         public static float DegreesToRadians(float degrees)
         {
             float radians = (float)((Math.PI / 180) * degrees);
