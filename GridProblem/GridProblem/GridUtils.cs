@@ -22,6 +22,9 @@ namespace GridProblem
             }
             return (int)squareSize;
         }
+        /// <summary>
+        /// Create list of rows from a list of columns
+        /// </summary>
         public static List<List<Vector2>> CreateRows(int squareSize, List<List<Vector2>> columns)
         {
             List<List<Vector2>> rows = new List<List<Vector2>>();
@@ -115,8 +118,6 @@ namespace GridProblem
         /// <summary>
         /// Finds the lowest point in a list of points
         /// </summary>
-        /// <param name="points"></param>
-        /// <returns></returns>
         static Vector2 GetLowestPoint(List<Vector2> points)
         {
             float height = float.MaxValue;
