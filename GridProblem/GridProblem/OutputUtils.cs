@@ -57,6 +57,11 @@ namespace GridProblem
             string line = String.Format("Row {0}: ", row);
             WritePoints(points, line);
         }
+        /// <summary>
+        /// Write points helper method for rows and columns
+        /// </summary>
+        /// <param name="points"></param>
+        /// <param name="value"></param>
         private static void WritePoints(List<Vector2> points, string value)
         {
             for (int i = 0; i < points.Count(); i++)
