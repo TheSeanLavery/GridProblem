@@ -17,7 +17,6 @@ namespace GridProblem
         {
             List<Vector2> generated = new List<Vector2>();
 
-            Matrix result = new Matrix();
             Random rand = new Random(grid.seed);
 
             Vector2 startingPoint = new Vector2();
