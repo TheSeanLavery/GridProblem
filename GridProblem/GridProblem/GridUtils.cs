@@ -137,13 +137,8 @@ namespace GridProblem
         static List<Vector2> GetClosest2Points(Vector2 startingPoint, List<Vector2> points)
         { 
             List<Vector2> result = new List<Vector2>();
-
-            Vector2 p1 = new Vector2();
-            Vector2 p2 = new Vector2();
-
             var dictionary = new Dictionary<Vector2, float>();
 
-            
             foreach(Vector2 p in points)
             {
                 float distance = Vector2.Distance(startingPoint, p);
