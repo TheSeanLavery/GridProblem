@@ -46,30 +46,19 @@ namespace GridProblem
         /// </summary>
         public static void WriteColumn(int column, List<Vector2> points)
         {
-            string value = String.Format("Col {0}: ", column);
-
-            for (int i = 0; i < points.Count(); i++)
-            {
-                Vector2 point = points[i];
-
-                //if last point don't add hyphen
-                if (i == points.Count() - 1)
-                {
-                    value += point.X + "," + point.Y;
-                }
-                else
-                {
-                    value += point.X + "," + point.Y + " - ";
-                }
-            }
-            Console.WriteLine(value);
+            string line = String.Format("Col {0}: ", column);
+            WritePoints(points, line);
         }
         /// <summary>
         /// Writes invididual row to the Console
         /// </summary>
         public static void WriteRow(int row, List<Vector2> points)
         {
-            string value = String.Format("Row {0}: ", row);
+            string line = String.Format("Row {0}: ", row);
+            WritePoints(points, line);
+        }
+        private static void WritePoints(List<Vector2> points, string value)
+        {
             for (int i = 0; i < points.Count(); i++)
             {
                 Vector2 point = points[i];
