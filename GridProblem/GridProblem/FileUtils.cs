@@ -25,8 +25,7 @@ namespace GridProblem
                 int count = 0;
                 foreach (var v in values)
                 {
-                    Double output;
-                    Double.TryParse(v, out output);
+                    double.TryParse(v, out double output);
 
                     //Only works with X and Y pair of numbers
                     if (count == 0)
