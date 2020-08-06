@@ -56,15 +56,17 @@ namespace GridProblem
         /// <summary>
         /// Gets a List of Vec2 for one column of data
         /// </summary>
-
         static List<Vector2> GetColumn(List<Vector2> points, int count)
         {
             List<Vector2> result = new List<Vector2>();
             Vector2 startingPoint = MathUtils.FindTopLeftPoint(points);
+
             result.Add(startingPoint);
             points.Remove(startingPoint);
 
             float angle = AngleOfClosest(startingPoint, points);
+
+            //Loop runs count -1 as the results already have the starting point added
             for (int i = 0; i < count - 1; i++)
             {
                 Vector2 closest = GetClosestPointAlongAngle(startingPoint, points, angle);
@@ -75,6 +77,9 @@ namespace GridProblem
             }
             return result;
         }
+        /// <summary>
+        /// Determins if two floats are within an error margin
+        /// </summary>
         static bool IsClose(float f1,float f2,float error = 10)
         {
             if(Math.Abs(f1-f2)< error)
@@ -83,6 +88,9 @@ namespace GridProblem
             }
             return false;
         }
+        /// <summary>
+        /// Gets the nearest point if the calculated angle is close to the desired angle
+        /// </summary>
         static Vector2 GetClosestPointAlongAngle(Vector2 point, List<Vector2> points, float angle)
         {
             Vector2 closestPoint = new Vector2();
@@ -104,6 +112,11 @@ namespace GridProblem
             }
             return closestPoint;
         }
+        /// <summary>
+        /// Finds the lowest point in a list of points
+        /// </summary>
+        /// <param name="points"></param>
+        /// <returns></returns>
         static Vector2 GetLowestPoint(List<Vector2> points)
         {
             float height = float.MaxValue;
@@ -118,6 +131,9 @@ namespace GridProblem
             }
             return value;
         }
+        /// <summary>
+        /// Finds the closest two points. Used for determining the next right, and bottom point
+        /// </summary>
         static List<Vector2> GetClosest2Points(Vector2 startingPoint, List<Vector2> points)
         { 
             List<Vector2> result = new List<Vector2>();
@@ -144,9 +160,6 @@ namespace GridProblem
         /// <summary>
         /// Operates on the top left point to find the next right and down points
         /// </summary>
-        /// <param name="startingPoint"></param>
-        /// <param name="points"></param>
-        /// <returns></returns>
         static float AngleOfClosest(Vector2 startingPoint, List<Vector2> points)
         {
             float angleTest = (float)MathUtils.AngleBetween(new Vector2(0,1), new Vector2(20,2));
@@ -155,6 +168,10 @@ namespace GridProblem
             float angle = (float)MathUtils.AngleBetween(startingPoint, bottomPoint);
             return angle;
         }
+        /// <summary>
+        /// Takes a list of columns and turns them into a single list of points.
+        /// Used for Unit Testing
+        /// </summary>
         public static List<Vector2> UnpackColumns(List<List<Vector2>> cols)
         {
             List<Vector2> vecs = new List<Vector2>();
