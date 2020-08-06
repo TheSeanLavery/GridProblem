@@ -40,11 +40,7 @@ namespace GridProblem
             bottomPoint = MathUtils.RotateAboutOrigin(bottomPoint, startingPoint, MathUtils.DegreesToRadians(-90));
             generated.Add(bottomPoint);
 
-
             List<List<Vector2>> columns = new List<List<Vector2>>();
-
-            //col.Add(startingPoint);
-            //col.Add(bottomPoint);
 
             Vector2 columnAngle = bottomPoint - startingPoint;
             Vector2 rowAngle = rightPoint - startingPoint;
@@ -65,13 +61,7 @@ namespace GridProblem
                 columns.Add(col);
             }
 
-
             return columns;
-
-            //result.RotateAt(angle, startingPoint);
-
-            //generated.Add()
-
         }
     }
 
