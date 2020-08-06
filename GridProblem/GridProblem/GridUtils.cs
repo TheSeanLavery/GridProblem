@@ -139,12 +139,15 @@ namespace GridProblem
             List<Vector2> result = new List<Vector2>();
             var dictionary = new Dictionary<Vector2, float>();
 
+            //calculate distances for all points relative to starting point
             foreach(Vector2 p in points)
             {
                 float distance = Vector2.Distance(startingPoint, p);
                 dictionary.Add(p, distance);
             }
             var list = dictionary.ToList();
+
+            //sort points by distance
             list.Sort((pair1, pair2) => pair1.Value.CompareTo(pair2.Value));
 
             result.Add(list[0].Key);
