@@ -41,6 +41,9 @@ namespace GridProblem
             double value = Math.Atan2(yDiff, xDiff) * 180.0 / Math.PI;
             return value;
         }
+        /// <summary>
+        /// Calculates Angle Between two line segments
+        /// </summary>
         public static double AngleBetweenLines(Vector2 vector1, Vector2 vector2)
         {
             double sin = vector1.X * vector2.Y - vector2.X * vector1.Y;
@@ -48,15 +51,21 @@ namespace GridProblem
 
             return Math.Atan2(sin, cos) * (180 / Math.PI);
         }
-    
+        /// <summary>
+        /// Converts Degrees to Radians
+        /// </summary>
+        /// <param name="degrees"></param>
+        /// <returns></returns>
         public static float DegreesToRadians(float degrees)
         {
             float radians = (float)((Math.PI / 180) * degrees);
             return (radians);
-        }
-        public static Vector2 RotateAboutOrigin(Vector2 point, Vector2 origin, float rotation)
+        }/// <summary>
+        /// Rotates a point around origin point by radians
+        /// </summary>
+        public static Vector2 RotateAboutOrigin(Vector2 point, Vector2 origin, float radians)
         {
-            return Vector2.Transform(point - origin, Matrix3x2.CreateRotation(rotation)) + origin;
+            return Vector2.Transform(point - origin, Matrix3x2.CreateRotation(radians)) + origin;
         }
     }
 }
